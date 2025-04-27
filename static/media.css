@@ -1,0 +1,129 @@
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .menu_side {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .song_side {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .master_play {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .popular_song {
+        margin-top: 20px;
+    }
+
+    .pop_song {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .search {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .search input {
+        width: 100%;
+    }
+
+    .user {
+        display: none;
+    }
+
+    .menu_song {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .eq-sliders {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .eq-slider {
+        width: 45%;
+        margin: 5px;
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+        margin: 20px auto;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 480px) {
+    .pop_song {
+        grid-template-columns: 1fr;
+    }
+
+    .icon {
+        gap: 10px;
+    }
+
+    .vol {
+        display: none;
+    }
+
+    .equalizer {
+        display: none;
+    }
+
+    .master_play {
+        padding: 5px;
+    }
+
+    .master_play img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .master_play h5 {
+        font-size: 14px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+}
+
+/* Landscape Mode */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .menu_side {
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .song_side {
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .master_play {
+        position: relative;
+    }
+} 

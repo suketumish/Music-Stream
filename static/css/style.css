@@ -55,7 +55,7 @@ header .left_bx1 .content .card input{
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 body {
@@ -84,6 +84,7 @@ header {
     color: #fff;
     padding: 20px;
     overflow-y: auto;
+    transition: all 0.3s ease;
 }
 
 .menu_side::-webkit-scrollbar {
@@ -1104,9 +1105,8 @@ span#showSignup, span#showLogin { color:#36e2ec; cursor:pointer; }
     .menu_side {
         position: fixed;
         left: -100%;
-        width: 50%;
-        height: 100%;
-        z-index: 1001;
+        width: 100%;
+        z-index: 1000;
         transition: 0.3s linear;
     }
     .menu_side.active {
@@ -1116,11 +1116,89 @@ span#showSignup, span#showLogin { color:#36e2ec; cursor:pointer; }
         width: 100%;
     }
     .master_play {
-        height: 12%;
+        padding: 10px;
     }
 }
 
-/* ... rest of the existing media queries ... */
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: #111727;
+    z-index: 1001;
+}
+
+.mobile-nav .menu-toggle {
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 680px) {
+    .mobile-nav {
+        display: block;
+    }
+}
+
+/* Mobile Player Controls */
+.mobile-controls {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: #111727;
+    z-index: 1000;
+}
+
+@media screen and (max-width: 680px) {
+    .mobile-controls {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+/* Touch-friendly Controls */
+@media (hover: none) {
+    .icon .bi,
+    .playlist h4,
+    .menu_song li {
+        padding: 10px;
+    }
+    
+    input[type="range"] {
+        height: 20px;
+    }
+    
+    .bar .dot,
+    .vol .dot {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Landscape Mode Optimizations */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .menu_side,
+    .song_side {
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .master_play {
+        position: relative;
+    }
+    
+    .mobile-controls {
+        position: relative;
+    }
+}
 
 .user {
     position: relative;
