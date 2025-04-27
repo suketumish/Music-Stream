@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Spotify Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}"/>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Spotify Logo">
+            </div>
+            <h2>Log in to Spotify</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Log In</button>
+            </form>
+            <div class="divider">
+                <span>or</span>
+            </div>
+            <a href="{{ url_for('signup') }}" class="signup-link">Don't have an account? Sign up for Spotify</a>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userMenu = document.getElementById('userMenu') || document.querySelector('.user');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        if (userMenu && loginModal && signupModal) {
+            userMenu.addEventListener('click', function() {
+                const usernameDisplay = document.getElementById('usernameDisplay');
+                // Only show login modal if not logged in and no modal is already open
+                const loginOpen = loginModal.style.display === 'block';
+                const signupOpen = signupModal.style.display === 'block';
+                if ((!usernameDisplay || !usernameDisplay.textContent.trim()) && !loginOpen && !signupOpen) {
+                    loginModal.style.display = 'block';
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    <title>Music Player</title>
+</head>
+
+<body>
+    <header>
+        <div class="menu_side">
+            <h6 id="menu_list_active_button"><i class="bi bi-music-note-list"></i></h6>
+            <h1>Playlist</h1>
+            <div class="playlist">
+                <h4 class="active"><span></span><i class="bi bi-music-note-beamed"></i> All Songs</h4>
+                <h4><span></span><i class="bi bi-music-note-beamed"></i> Recently Played</h4>
+                <h4><span></span><i class="bi bi-music-note-beamed"></i> Favorites</h4>
+            </div>
+            <div class="menu_song">
+                <!-- Song items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="song_side">
+            <nav>
+                <ul>
+                    <li>Discover <span></span></li>
+                    <li>MY LIBRARY</li>
+                    <li>RADIO</li>
+                </ul>
+                <div class="search">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search Music...">
+                    <div class="search_results">
+                        <!-- Search results will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="img/KDS CODER.png" alt="User">
+                </div>
+            </nav>
+            <div class="content">
+                <h1>Welcome to Music Player</h1>
+                <p>Select a song from the playlist to start playing</p>
+                <div class="buttons">
+                    <button id="playButton">PLAY</button>
+                    <button>FOLLOW</button>
+                </div>
+            </div>
+
+            <div class="popular_song">
+                <div class="h4">
+                    <h4>Popular Songs</h4>
+                    <div class="btn_s">
+                        <i class="bi bi-arrow-left-short" id="left_scroll"></i>
+                        <i class="bi bi-arrow-right-short" id="right_scroll"></i>
+                    </div>
+                </div>
+                <div class="pop_song">
+                    <!-- Popular songs will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <div class="master_play">
+            <div class="wave" id="wave">
+                <div class="wave1"></div>
+                <div class="wave1"></div>
+                <div class="wave1"></div>
+            </div>
+            <img src="img/1.jpg" alt="" id="poster_master_play">
+            <h5 id="title">
+                Select a song
+                <div class="subtitle">From playlist</div>
+            </h5>
+            <div class="icon">
+                <i class="bi shuffle bi-music-note-beamed">next</i>
+                <i class="bi bi-skip-start-fill" id="back"></i>
+                <i class="bi bi-play-fill" id="masterPlay"></i>
+                <i class="bi bi-skip-end-fill" id="next"></i>
+                <a href="" download id="download_music"><i class="bi bi-cloud-arrow-down-fill"></i></a>
+            </div>
+            <span id="currentStart">0:00</span>
+            <div class="bar">
+                <input type="range" id="seek" min="0" max="100">
+                <div class="bar2" id="bar2"></div>
+                <div class="dot"></div>
+            </div>
+            <span id="currentEnd">0:00</span>
+            <div class="vol">
+                <i class="bi bi-volume-up-fill" id="vol_icon"></i>
+                <input type="range" min="0" max="100" id="vol">
+                <div class="vol_bar"></div>
+                <div class="dot" id="vol_dot"></div>
+            </div>
+            <div class="equalizer">
+                <button id="eqToggle" class="eq-btn">
+                    <i class="bi bi-sliders"></i>
+                </button>
+                <div class="eq-sliders" style="display: none;">
+                    <div class="eq-slider">
+                        <label>60Hz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="60">
+                    </div>
+                    <div class="eq-slider">
+                        <label>170Hz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="170">
+                    </div>
+                    <div class="eq-slider">
+                        <label>310Hz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="310">
+                    </div>
+                    <div class="eq-slider">
+                        <label>600Hz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="600">
+                    </div>
+                    <div class="eq-slider">
+                        <label>1kHz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="1000">
+                    </div>
+                    <div class="eq-slider">
+                        <label>3kHz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="3000">
+                    </div>
+                    <div class="eq-slider">
+                        <label>6kHz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="6000">
+                    </div>
+                    <div class="eq-slider">
+                        <label>12kHz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="12000">
+                    </div>
+                    <div class="eq-slider">
+                        <label>14kHz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="14000">
+                    </div>
+                    <div class="eq-slider">
+                        <label>16kHz</label>
+                        <input type="range" min="-12" max="12" value="0" class="eq-band" data-band="16000">
+                    </div>
+                    <button class="eq-reset">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script src="app.js"></script>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button id="loginBtn">Login</button>
+            <p>Don't have an account? <span id="showSignup">Sign up</span></p>
+            <div id="loginMsg"></div>
+        </div>
+    </div>
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeSignup">&times;</span>
+            <h2>Sign Up</h2>
+            <input type="text" id="signupUsername" placeholder="Username">
+            <input type="password" id="signupPassword" placeholder="Password">
+            <button id="signupBtn">Sign Up</button>
+            <p>Already have an account? <span id="showLogin">Login</span></p>
+            <div id="signupMsg"></div>
+        </div>
+    </div>
+</body>
+
+</html>
